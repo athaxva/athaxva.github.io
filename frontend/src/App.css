@@ -1,34 +1,42 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Portfolio App Styles */
+
+.App {
+  background: #06060a;
+  min-height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
+/* Ensure no default text alignment */
 .App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+  background-color: #06060a;
+  min-height: 100vh;
 }
 
-.App-link {
-    color: #61dafb;
+/* Selection styling */
+::selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: #ffffff;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+::-moz-selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: #ffffff;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(0, 212, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Smooth image loading */
+img {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+img[loading] {
+  opacity: 0;
 }
