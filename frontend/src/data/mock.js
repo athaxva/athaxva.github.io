@@ -72,9 +72,9 @@ export const exploringData = [
 ];
 
 export const contactData = {
-  email: "atharva.pathak@email.com",
-  linkedin: "linkedin.com/in/atharvapathak",
-  github: "github.com/atharvapathak",
+  email: "atharva@atharvapathak.in",
+  linkedin: "linkedin.com/in/atharvappathak",
+  github: "github.com/athaxva",
   orcid: "0009-0004-7418-5834"
 };
 

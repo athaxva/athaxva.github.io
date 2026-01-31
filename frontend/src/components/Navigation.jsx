@@ -41,27 +41,29 @@ const Navigation = () => {
         >
           <span className="gradient-text">AP</span>
         </a>
+{/* Desktop Navigation */}
+<div className="hidden md:flex items-center gap-8">
+  {navLinks.map((link) => (
+    <button
+      key={link.name}
+      onClick={() => scrollToSection(link.href)}
+      className="text-sm text-gray-400 hover:text-white transition-colors duration-200 relative group"
+    >
+      {link.name}
+      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-200 group-hover:w-full" />
+    </button>
+  ))}
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <button
-              key={link.name}
-              onClick={() => scrollToSection(link.href)}
-              className="text-sm text-gray-400 hover:text-white transition-colors duration-200 relative group"
-            >
-              {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-200 group-hover:w-full" />
-            </button>
-          ))}
-          <Button
-            size="sm"
-            className="bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-colors duration-200"
-          >
-            <Download className="w-4 h-4 mr-2" />
-            Resume
-          </Button>
-        </div>
+  <a href="/Atharva_Pathak_Resume.pdf" download>
+    <Button
+      size="sm"
+      className="bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-colors duration-200"
+    >
+      <Download className="w-4 h-4 mr-2" />
+      Resume
+    </Button>
+  </a>
+</div>
 
         {/* Mobile Menu Button */}
         <button
