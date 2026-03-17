@@ -2,8 +2,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TruthLens AI — APK Download</title>
+
+<!-- ✅ Updated Title -->
+<title>TruthLensAI — APK Download</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
   :root {
     --bg: #0a0a0f;
@@ -27,7 +33,6 @@
     overflow-x: hidden;
   }
 
-  /* Background grid */
   body::before {
     content: '';
     position: fixed;
@@ -40,7 +45,6 @@
     z-index: 0;
   }
 
-  /* Glow orb */
   body::after {
     content: '';
     position: fixed;
@@ -62,7 +66,6 @@
     padding: 60px 32px 80px;
   }
 
-  /* Header */
   .header {
     margin-bottom: 56px;
     animation: fadeUp 0.6s ease both;
@@ -84,45 +87,21 @@
     align-items: center;
     justify-content: center;
     font-size: 22px;
-    flex-shrink: 0;
     box-shadow: 0 0 20px rgba(0,229,255,0.3);
   }
 
+  /* ✅ Updated heading style */
   h1 {
     font-family: 'Syne', sans-serif;
     font-size: 38px;
     font-weight: 800;
     letter-spacing: -1px;
-    background: linear-gradient(90deg, #fff 30%, var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
 
-  .tagline {
-    font-size: 13px;
+  .brand-ai {
     color: var(--accent);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    font-weight: 500;
   }
 
-  .description {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.8;
-    max-width: 580px;
-    font-family: 'DM Mono', monospace;
-    font-weight: 300;
-  }
-
-  .description strong {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  /* Pill badge */
   .badge {
     display: inline-flex;
     align-items: center;
@@ -138,15 +117,13 @@
     margin-bottom: 20px;
   }
 
-  .badge-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 6px var(--accent);
-    animation: pulse 2s infinite;
+  .description {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 580px;
   }
 
-  /* Cards */
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -155,9 +132,6 @@
     margin-bottom: 20px;
     animation: fadeUp 0.6s ease both;
   }
-
-  .card:nth-child(2) { animation-delay: 0.1s; }
-  .card:nth-child(3) { animation-delay: 0.2s; }
 
   .card-label {
     font-size: 10px;
@@ -177,58 +151,21 @@
     background: var(--border);
   }
 
-  /* Version blocks */
-  .version-block {
-    padding: 18px 0;
-    border-bottom: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 12px;
-    align-items: start;
-  }
-
-  .version-block:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  .version-block:first-child {
-    padding-top: 0;
-  }
-
   .version-tag {
     font-family: 'Syne', sans-serif;
     font-size: 17px;
     font-weight: 700;
     color: #fff;
     margin-bottom: 6px;
-    letter-spacing: -0.3px;
   }
 
   .version-notes {
     font-size: 12px;
     color: var(--muted);
     line-height: 1.7;
-    font-weight: 300;
     white-space: pre-wrap;
-    max-width: 480px;
   }
 
-  /* Latest block styling */
-  .latest-block {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .latest-info .version-tag {
-    font-size: 26px;
-    margin-bottom: 8px;
-  }
-
-  /* Download button */
   .dl-btn {
     display: inline-flex;
     align-items: center;
@@ -238,102 +175,35 @@
     color: #000;
     text-decoration: none;
     border-radius: 8px;
-    font-family: 'DM Mono', monospace;
     font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    flex-shrink: 0;
   }
 
-  .dl-btn:hover {
-    background: #fff;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(0,229,255,0.25);
-  }
-
-  .dl-btn svg {
-    width: 14px; height: 14px;
-  }
-
-  .dl-btn-sm {
-    padding: 7px 14px;
-    font-size: 11px;
-    background: transparent;
-    color: var(--accent);
-    border: 1px solid rgba(0,229,255,0.3);
-  }
-
-  .dl-btn-sm:hover {
-    background: rgba(0,229,255,0.08);
-    color: var(--accent);
-    box-shadow: 0 4px 14px rgba(0,229,255,0.1);
-  }
-
-  /* Loading / skeleton */
-  .loading {
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    padding: 12px 0;
-  }
-
-  .skeleton {
-    height: 14px;
-    border-radius: 4px;
-    background: linear-gradient(90deg, var(--surface2) 25%, #202030 50%, var(--surface2) 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-    margin-bottom: 10px;
-  }
-
-  /* Footer */
   .footer {
     margin-top: 48px;
     font-size: 11px;
     color: var(--muted);
-    letter-spacing: 0.5px;
-    animation: fadeUp 0.6s 0.3s ease both;
   }
 
-  .footer a {
-    color: var(--accent);
-    text-decoration: none;
-  }
-
-  /* Animations */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
-  @keyframes shimmer {
-    to { background-position: -200% 0; }
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.3; }
-  }
-
-  /* Error */
-  .error-msg {
-    font-size: 12px;
-    color: #ff6b6b;
-    padding: 12px 0;
-  }
 </style>
 </head>
+
 <body>
 <div class="wrapper">
 
   <header class="header">
     <div class="logo-row">
       <div class="logo-icon">🔍</div>
-      <h1>TruthLens.AI</h1>
+
+      <!-- ✅ FIXED BRAND -->
+      <h1>TruthLens<span class="brand-ai">AI</span></h1>
     </div>
-    <div class="badge"><span class="badge-dot"></span> Android App</div>
+
+    <div class="badge">Android App</div>
+
     <p class="description">
       Deepfake detection for Android, developed by
       <strong>Atharva Pathak</strong> and <strong>Harsh Dharnidharka</strong>.
@@ -341,88 +211,69 @@
     </p>
   </header>
 
-  <div class="card" id="card-latest">
+  <div class="card">
     <div class="card-label">Latest Release</div>
-    <div id="latest">
-      <div class="skeleton" style="width:120px; height:20px;"></div>
-      <div class="skeleton" style="width:260px;"></div>
-      <div class="skeleton" style="width:180px;"></div>
-    </div>
+    <div id="latest">Loading...</div>
   </div>
 
-  <div class="card" id="card-versions">
+  <div class="card">
     <div class="card-label">All Versions</div>
-    <div id="versions">
-      <div class="skeleton" style="width:80px; height:16px;"></div>
-      <div class="skeleton" style="width:300px;"></div>
-      <div class="skeleton" style="width:80px; height:16px; margin-top:18px;"></div>
-      <div class="skeleton" style="width:220px;"></div>
-    </div>
+    <div id="versions">Loading...</div>
   </div>
 
   <div class="footer">
-    Releases fetched from <a href="https://github.com/athaxva/athaxva.github.io" target="_blank">github.com/athaxva/athaxva.github.io</a>
+    Releases fetched from 
+    <a href="https://github.com/athaxva/athaxva.github.io" target="_blank">
+      GitHub
+    </a>
   </div>
 
 </div>
 
 <script>
-  const dlIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
+async function loadReleases() {
+  try {
+    const res = await fetch("https://api.github.com/repos/athaxva/athaxva.github.io/releases");
+    const releases = await res.json();
 
-  async function loadReleases() {
-    try {
-      const response = await fetch(
-        "https://api.github.com/repos/athaxva/athaxva.github.io/releases"
-      );
-      const releases = await response.json();
+    let latestHTML = "";
+    let versionsHTML = "";
 
-      let latestHTML = "";
-      let versionsHTML = "";
+    releases.forEach((release, i) => {
+      const asset = release.assets.find(a => a.name.endsWith(".apk"));
+      if (!asset) return;
 
-      releases.forEach((release, index) => {
-        const asset = release.assets.find(a => a.name.endsWith(".apk"));
-        if (!asset) return;
-
-        const notes = (release.body || "").trim();
-
-        if (index === 0) {
-          latestHTML = `
-            <div class="latest-block">
-              <div class="latest-info">
-                <div class="version-tag">${release.tag_name}</div>
-                ${notes ? `<div class="version-notes">${notes}</div>` : ''}
-              </div>
-              <a class="dl-btn" href="${asset.browser_download_url}">
-                ${dlIcon} Download APK
-              </a>
-            </div>`;
-        }
-
-        versionsHTML += `
-          <div class="version-block">
-            <div>
-              <div class="version-tag">${release.tag_name}</div>
-              ${notes ? `<div class="version-notes">${notes}</div>` : ''}
-            </div>
-            <a class="dl-btn dl-btn-sm" href="${asset.browser_download_url}">
-              ${dlIcon} APK
+      if (i === 0) {
+        latestHTML = `
+          <div>
+            <div class="version-tag">${release.tag_name}</div>
+            <div class="version-notes">${release.body || ""}</div>
+            <a class="dl-btn" href="${asset.browser_download_url}">
+              Download APK
             </a>
           </div>`;
-      });
+      }
 
-      document.getElementById("latest").innerHTML =
-        latestHTML || '<p class="loading">No releases found.</p>';
-      document.getElementById("versions").innerHTML =
-        versionsHTML || '<p class="loading">No releases found.</p>';
+      versionsHTML += `
+        <div style="margin-bottom:16px;">
+          <div class="version-tag">${release.tag_name}</div>
+          <a class="dl-btn" href="${asset.browser_download_url}">
+            APK
+          </a>
+        </div>`;
+    });
 
-    } catch (err) {
-      const msg = `<p class="error-msg">Failed to load releases. Check your connection.</p>`;
-      document.getElementById("latest").innerHTML = msg;
-      document.getElementById("versions").innerHTML = msg;
-    }
+    document.getElementById("latest").innerHTML = latestHTML;
+    document.getElementById("versions").innerHTML = versionsHTML;
+
+  } catch (e) {
+    document.getElementById("latest").innerText = "Failed to load releases";
+    document.getElementById("versions").innerText = "Failed to load releases";
   }
+}
 
-  loadReleases();
+loadReleases();
 </script>
+
 </body>
 </html>
