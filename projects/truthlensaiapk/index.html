@@ -2,273 +2,226 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-<!-- ✅ Updated Title -->
 <title>TruthLensAI — APK Download</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --bg: #0a0a0f;
-    --surface: #111118;
-    --surface2: #18181f;
-    --border: rgba(255,255,255,0.07);
-    --accent: #00e5ff;
-    --accent2: #7b5ea7;
-    --text: #e8e8f0;
-    --muted: #6b6b80;
-    --success: #00c896;
-  }
+:root {
+  --bg:#0a0a0f;
+  --surface:#111118;
+  --surface2:#18181f;
+  --border:rgba(255,255,255,0.07);
+  --accent:#00e5ff;
+  --accent2:#7b5ea7;
+  --text:#e8e8f0;
+  --muted:#6b6b80;
+}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*{box-sizing:border-box;margin:0;padding:0;}
 
-  body {
-    font-family: 'DM Mono', monospace;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+body{
+  font-family:'DM Mono',monospace;
+  background:var(--bg);
+  color:var(--text);
+}
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
+.wrapper{
+  max-width:860px;
+  margin:auto;
+  padding:60px 24px;
+}
 
-  body::after {
-    content: '';
-    position: fixed;
-    top: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 700px;
-    height: 500px;
-    background: radial-gradient(ellipse, rgba(0,229,255,0.06) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
+.logo-row{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:20px;
+}
 
-  .wrapper {
-    position: relative;
-    z-index: 1;
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 60px 32px 80px;
-  }
+.logo-icon{
+  width:44px;height:44px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+}
 
-  .header {
-    margin-bottom: 56px;
-    animation: fadeUp 0.6s ease both;
-  }
+h1{
+  font-family:'Syne',sans-serif;
+  font-size:38px;
+}
 
-  .logo-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 20px;
-  }
+.brand-ai{color:var(--accent);}
 
-  .logo-icon {
-    width: 44px;
-    height: 44px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    box-shadow: 0 0 20px rgba(0,229,255,0.3);
-  }
+.badge{
+  display:inline-block;
+  padding:4px 12px;
+  border-radius:100px;
+  font-size:11px;
+  color:var(--accent);
+  border:1px solid rgba(0,229,255,0.3);
+  margin-bottom:16px;
+}
 
-  /* ✅ Updated heading style */
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: 38px;
-    font-weight: 800;
-    letter-spacing: -1px;
-  }
+.description{
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.7;
+}
 
-  .brand-ai {
-    color: var(--accent);
-  }
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  margin-top:20px;
+}
 
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 12px;
-    background: rgba(0,229,255,0.08);
-    border: 1px solid rgba(0,229,255,0.2);
-    border-radius: 100px;
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
+.card-label{
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:16px;
+  cursor:pointer;
+}
 
-  .description {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.8;
-    max-width: 580px;
-  }
+.version-block{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:14px;
+}
 
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px 32px;
-    margin-bottom: 20px;
-    animation: fadeUp 0.6s ease both;
-  }
+.version-tag{
+  font-family:'Syne';
+  font-size:16px;
+}
 
-  .card-label {
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+.version-notes{
+  font-size:12px;
+  color:var(--muted);
+}
 
-  .card-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
+.dl-btn{
+  background:var(--accent);
+  color:#000;
+  padding:8px 14px;
+  border-radius:6px;
+  text-decoration:none;
+  font-size:12px;
+}
 
-  .version-tag {
-    font-family: 'Syne', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 6px;
-  }
-
-  .version-notes {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.7;
-    white-space: pre-wrap;
-  }
-
-  .dl-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    background: var(--accent);
-    color: #000;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 12px;
-  }
-
-  .footer {
-    margin-top: 48px;
-    font-size: 11px;
-    color: var(--muted);
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+#versions{
+  display:none;
+  transition:0.3s;
+}
 </style>
 </head>
 
 <body>
 <div class="wrapper">
 
-  <header class="header">
-    <div class="logo-row">
-      <div class="logo-icon">🔍</div>
-
-      <!-- ✅ FIXED BRAND -->
-      <h1>TruthLens<span class="brand-ai">AI</span></h1>
-    </div>
-
-    <div class="badge">Android App</div>
-
-    <p class="description">
-      Deepfake detection for Android, developed by
-      <strong>Atharva Pathak</strong> and <strong>Harsh Dharnidharka</strong>.
-      Analyzes images to determine whether they are authentic or AI-manipulated.
-    </p>
-  </header>
-
-  <div class="card">
-    <div class="card-label">Latest Release</div>
-    <div id="latest">Loading...</div>
+<header>
+  <div class="logo-row">
+    <div class="logo-icon">🔍</div>
+    <h1>TruthLens<span class="brand-ai">AI</span></h1>
   </div>
 
-  <div class="card">
-    <div class="card-label">All Versions</div>
-    <div id="versions">Loading...</div>
+  <div class="badge">Android App</div>
+
+  <p class="description">
+    Deepfake detection app by <strong>Atharva Pathak</strong> and 
+    <strong>Harsh Dharnidharka</strong>.
+  </p>
+</header>
+
+<!-- ✅ Latest -->
+<div class="card">
+  <div class="card-label">Latest Release</div>
+  <div id="latest">Loading...</div>
+</div>
+
+<!-- ✅ Collapsible Versions -->
+<div class="card">
+
+  <div class="card-label" id="toggleBtn" onclick="toggleVersions()">
+    All Versions ▼
   </div>
 
-  <div class="footer">
-    Releases fetched from 
-    <a href="https://github.com/athaxva/athaxva.github.io" target="_blank">
-      GitHub
-    </a>
+  <div id="versions">
+    <p class="description">Click to load versions...</p>
   </div>
 
 </div>
 
+</div>
+
 <script>
-async function loadReleases() {
-  try {
-    const res = await fetch("https://api.github.com/repos/athaxva/athaxva.github.io/releases");
-    const releases = await res.json();
+let versionsLoaded = false;
+let versionsVisible = false;
+let allVersionsHTML = "";
 
-    let latestHTML = "";
-    let versionsHTML = "";
+async function loadReleases(){
+  const res = await fetch("https://api.github.com/repos/athaxva/athaxva.github.io/releases");
+  const releases = await res.json();
 
-    releases.forEach((release, i) => {
-      const asset = release.assets.find(a => a.name.endsWith(".apk"));
-      if (!asset) return;
+  let latestHTML = "";
+  let versionsHTML = "";
 
-      if (i === 0) {
-        latestHTML = `
+  releases.forEach((release,i)=>{
+    const asset = release.assets.find(a=>a.name.endsWith(".apk"));
+    if(!asset) return;
+
+    const notes = release.body || "";
+
+    if(i===0){
+      latestHTML = `
+        <div class="version-block">
           <div>
             <div class="version-tag">${release.tag_name}</div>
-            <div class="version-notes">${release.body || ""}</div>
-            <a class="dl-btn" href="${asset.browser_download_url}">
-              Download APK
-            </a>
-          </div>`;
-      }
-
-      versionsHTML += `
-        <div style="margin-bottom:16px;">
-          <div class="version-tag">${release.tag_name}</div>
+            <div class="version-notes">${notes}</div>
+          </div>
           <a class="dl-btn" href="${asset.browser_download_url}">
-            APK
+            Download
           </a>
         </div>`;
-    });
+    }
 
-    document.getElementById("latest").innerHTML = latestHTML;
-    document.getElementById("versions").innerHTML = versionsHTML;
+    versionsHTML += `
+      <div class="version-block">
+        <div>
+          <div class="version-tag">${release.tag_name}</div>
+          <div class="version-notes">${notes}</div>
+        </div>
+        <a class="dl-btn" href="${asset.browser_download_url}">
+          APK
+        </a>
+      </div>`;
+  });
 
-  } catch (e) {
-    document.getElementById("latest").innerText = "Failed to load releases";
-    document.getElementById("versions").innerText = "Failed to load releases";
+  document.getElementById("latest").innerHTML = latestHTML;
+  allVersionsHTML = versionsHTML;
+}
+
+function toggleVersions(){
+  const box = document.getElementById("versions");
+  const btn = document.getElementById("toggleBtn");
+
+  versionsVisible = !versionsVisible;
+
+  if(versionsVisible){
+    box.style.display = "block";
+    btn.innerText = "All Versions ▲";
+
+    if(!versionsLoaded){
+      box.innerHTML = allVersionsHTML;
+      versionsLoaded = true;
+    }
+
+  } else {
+    box.style.display = "none";
+    btn.innerText = "All Versions ▼";
   }
 }
 
