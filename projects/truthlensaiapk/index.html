@@ -4,228 +4,628 @@
 <meta charset="UTF-8">
 <title>TruthLensAI — APK Download</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#0a0a0f;
-  --surface:#111118;
-  --surface2:#18181f;
-  --border:rgba(255,255,255,0.07);
-  --accent:#00e5ff;
-  --accent2:#7b5ea7;
-  --text:#e8e8f0;
-  --muted:#6b6b80;
-}
+  :root {
+    --bg: #060608;
+    --surface: #0e0e14;
+    --surface2: #15151e;
+    --border: rgba(255,255,255,0.06);
+    --border-hover: rgba(0,229,255,0.25);
+    --accent: #00e5ff;
+    --accent-dim: rgba(0,229,255,0.12);
+    --accent2: #8b5cf6;
+    --text: #f0f0f8;
+    --muted: #52526a;
+    --muted2: #8888a0;
+    --success: #00d4aa;
+  }
 
-*{box-sizing:border-box;margin:0;padding:0;}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-body{
-  font-family:'DM Mono',monospace;
-  background:var(--bg);
-  color:var(--text);
-}
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-.wrapper{
-  max-width:860px;
-  margin:auto;
-  padding:60px 24px;
-}
+  /* Grid background */
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    z-index: 0;
+    pointer-events: none;
+  }
 
-.logo-row{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom:20px;
-}
+  /* Glow orb */
+  .bg-glow {
+    position: fixed;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(0,229,255,0.05) 0%, transparent 65%);
+    z-index: 0;
+    pointer-events: none;
+  }
 
-.logo-icon{
-  width:44px;height:44px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-}
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 72px 28px 100px;
+  }
 
-h1{
-  font-family:'Syne',sans-serif;
-  font-size:38px;
-}
+  /* ── HEADER ── */
+  .header {
+    margin-bottom: 64px;
+    animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both;
+  }
 
-.brand-ai{color:var(--accent);}
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
 
-.badge{
-  display:inline-block;
-  padding:4px 12px;
-  border-radius:100px;
-  font-size:11px;
-  color:var(--accent);
-  border:1px solid rgba(0,229,255,0.3);
-  margin-bottom:16px;
-}
+  .logo-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #00e5ff 0%, #8b5cf6 100%);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 0 28px rgba(0,229,255,0.25), inset 0 1px 0 rgba(255,255,255,0.15);
+    flex-shrink: 0;
+  }
 
-.description{
-  font-size:14px;
-  color:var(--muted);
-  line-height:1.7;
-}
+  .logo-text h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1;
+    color: #fff;
+  }
 
-.card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:24px;
-  margin-top:20px;
-}
+  .logo-text h1 span {
+    color: var(--accent);
+  }
 
-.card-label{
-  font-size:11px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:16px;
-  cursor:pointer;
-}
+  .logo-text .tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted2);
+    margin-top: 5px;
+    letter-spacing: 0.5px;
+  }
 
-.version-block{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:14px;
-}
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
 
-.version-tag{
-  font-family:'Syne';
-  font-size:16px;
-}
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
 
-.version-notes{
-  font-size:12px;
-  color:var(--muted);
-}
+  .pill-android {
+    background: rgba(0,229,255,0.08);
+    border: 1px solid rgba(0,229,255,0.2);
+    color: var(--accent);
+  }
 
-.dl-btn{
-  background:var(--accent);
-  color:#000;
-  padding:8px 14px;
-  border-radius:6px;
-  text-decoration:none;
-  font-size:12px;
-}
+  .pill-android::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 6px var(--accent);
+  }
 
-#versions{
-  display:none;
-  transition:0.3s;
-}
+  .pill-authors {
+    background: rgba(139,92,246,0.08);
+    border: 1px solid rgba(139,92,246,0.2);
+    color: #a78bfa;
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 100px;
+  }
+
+  .header-desc {
+    font-size: 14px;
+    color: var(--muted2);
+    line-height: 1.75;
+    max-width: 520px;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── LATEST RELEASE CARD ── */
+  .latest-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 16px;
+    animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.1s both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .latest-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,229,255,0.3), transparent);
+  }
+
+  .latest-inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .latest-info { flex: 1; min-width: 0; }
+
+  .version-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .version-number {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+
+  .version-new {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(0,212,170,0.12);
+    border: 1px solid rgba(0,212,170,0.25);
+    color: var(--success);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .release-notes {
+    font-size: 13px;
+    color: var(--muted2);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .release-notes strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .release-notes ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 6px;
+  }
+
+  .release-notes ul li {
+    padding: 3px 0;
+    padding-left: 16px;
+    position: relative;
+    color: var(--muted2);
+    font-size: 13px;
+  }
+
+  .release-notes ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .release-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .dl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    background: var(--accent);
+    color: #000;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 24px rgba(0,229,255,0.2);
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+
+  .dl-btn:hover {
+    background: #33eeff;
+    box-shadow: 0 0 32px rgba(0,229,255,0.4);
+    transform: translateY(-1px);
+  }
+
+  .dl-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* ── VERSION LIST ── */
+  .versions-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+  }
+
+  .versions-header {
+    padding: 24px 28px 16px;
+  }
+
+  .version-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 28px;
+    border-top: 1px solid var(--border);
+    transition: background 0.15s ease;
+    cursor: default;
+  }
+
+  .version-row:hover {
+    background: rgba(255,255,255,0.02);
+  }
+
+  .version-row:hover .apk-btn {
+    border-color: var(--border-hover);
+    color: var(--accent);
+  }
+
+  .vr-num {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    min-width: 56px;
+  }
+
+  .vr-notes {
+    flex: 1;
+    font-size: 12px;
+    color: var(--muted2);
+    line-height: 1.5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .vr-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .apk-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    color: var(--muted2);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .apk-btn:hover {
+    background: var(--accent-dim);
+    border-color: var(--border-hover);
+    color: var(--accent);
+  }
+
+  /* loading skeleton */
+  .skeleton {
+    height: 16px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--surface2) 25%, rgba(255,255,255,0.04) 50%, var(--surface2) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.3s both;
+  }
+
+  .footer-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .footer-text a {
+    color: var(--muted2);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-text a:hover { color: var(--accent); }
+
+  .footer-divider {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--muted);
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 8px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 </style>
 </head>
 
 <body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+
 <div class="wrapper">
 
-<header>
-  <div class="logo-row">
-    <div class="logo-icon">🔍</div>
-    <h1>TruthLens<span class="brand-ai">AI</span></h1>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo-row">
+      <div class="logo-icon">🔍</div>
+      <div class="logo-text">
+        <h1>TruthLens<span>AI</span></h1>
+        <div class="tagline">deepfake detection engine</div>
+      </div>
+    </div>
+
+    <div class="header-meta">
+      <span class="pill pill-android">Android App</span>
+      <span class="pill pill-authors">Atharva Pathak &amp; Harsh Dharnidharka</span>
+    </div>
+
+    <p class="header-desc">
+      Analyzes images to determine whether they are authentic or AI-manipulated, using on-device inference for privacy-first detection.
+    </p>
+  </header>
+
+  <!-- LATEST RELEASE -->
+  <div class="section-label">Latest Release</div>
+  <div class="latest-card">
+    <div id="latest">
+      <div class="skeleton" style="width:100px; margin-bottom:12px;"></div>
+      <div class="skeleton" style="width:80%; margin-bottom:8px;"></div>
+      <div class="skeleton" style="width:60%;"></div>
+    </div>
   </div>
 
-  <div class="badge">Android App</div>
-
-  <p class="description">
-    Deepfake detection app by <strong>Atharva Pathak</strong> and 
-    <strong>Harsh Dharnidharka</strong>.
-  </p>
-</header>
-
-<!-- ✅ Latest -->
-<div class="card">
-  <div class="card-label">Latest Release</div>
-  <div id="latest">Loading...</div>
-</div>
-
-<!-- ✅ Collapsible Versions -->
-<div class="card">
-
-  <div class="card-label" id="toggleBtn" onclick="toggleVersions()">
-    All Versions ▼
+  <!-- ALL VERSIONS -->
+  <div class="section-label" style="margin-top: 36px;">All Versions</div>
+  <div class="versions-card">
+    <div id="versions">
+      <div style="padding: 24px 28px;">
+        <div class="skeleton" style="width:100%; margin-bottom:16px;"></div>
+        <div class="skeleton" style="width:90%;"></div>
+      </div>
+    </div>
   </div>
 
-  <div id="versions">
-    <p class="description">Click to load versions...</p>
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="footer-text">
+      Releases from
+      <a href="https://github.com/athaxva/athaxva.github.io" target="_blank">GitHub</a>
+      <span class="footer-divider"></span>
+      <a href="https://truthlensai.in" target="_blank">truthlensai.in</a>
+    </span>
+    <span class="footer-text" id="version-count" style="opacity:0.5;">—</span>
   </div>
-
-</div>
 
 </div>
 
 <script>
-let versionsLoaded = false;
-let versionsVisible = false;
-let allVersionsHTML = "";
+  function parseMarkdownNotes(body) {
+    if (!body) return '';
+    
+    // Parse ### headers and bullet points into clean HTML
+    let html = '';
+    const lines = body.split('\n').map(l => l.trim()).filter(Boolean);
+    let inList = false;
 
-async function loadReleases(){
-  const res = await fetch("https://api.github.com/repos/athaxva/athaxva.github.io/releases");
-  const releases = await res.json();
+    lines.forEach(line => {
+      if (line.startsWith('###')) {
+        if (inList) { html += '</ul>'; inList = false; }
+        const heading = line.replace(/^###\s*/, '');
+        html += `<strong>${heading}</strong>`;
+      } else if (line.startsWith('- ') || line.startsWith('• ')) {
+        if (!inList) { html += '<ul>'; inList = true; }
+        const item = line.replace(/^[-•]\s*/, '');
+        html += `<li>${item}</li>`;
+      } else if (line.startsWith('Date')) {
+        if (inList) { html += '</ul>'; inList = false; }
+        // skip, we show date separately
+      } else {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += `<p>${line}</p>`;
+      }
+    });
 
-  let latestHTML = "";
-  let versionsHTML = "";
-
-  releases.forEach((release,i)=>{
-    const asset = release.assets.find(a=>a.name.endsWith(".apk"));
-    if(!asset) return;
-
-    const notes = release.body || "";
-
-    if(i===0){
-      latestHTML = `
-        <div class="version-block">
-          <div>
-            <div class="version-tag">${release.tag_name}</div>
-            <div class="version-notes">${notes}</div>
-          </div>
-          <a class="dl-btn" href="${asset.browser_download_url}">
-            Download
-          </a>
-        </div>`;
-    }
-
-    versionsHTML += `
-      <div class="version-block">
-        <div>
-          <div class="version-tag">${release.tag_name}</div>
-          <div class="version-notes">${notes}</div>
-        </div>
-        <a class="dl-btn" href="${asset.browser_download_url}">
-          APK
-        </a>
-      </div>`;
-  });
-
-  document.getElementById("latest").innerHTML = latestHTML;
-  allVersionsHTML = versionsHTML;
-}
-
-function toggleVersions(){
-  const box = document.getElementById("versions");
-  const btn = document.getElementById("toggleBtn");
-
-  versionsVisible = !versionsVisible;
-
-  if(versionsVisible){
-    box.style.display = "block";
-    btn.innerText = "All Versions ▲";
-
-    if(!versionsLoaded){
-      box.innerHTML = allVersionsHTML;
-      versionsLoaded = true;
-    }
-
-  } else {
-    box.style.display = "none";
-    btn.innerText = "All Versions ▼";
+    if (inList) html += '</ul>';
+    return html;
   }
-}
 
-loadReleases();
+  function extractDate(body) {
+    if (!body) return '';
+    const match = body.match(/Date[-:\s]+(\d{2}[\/\-\.]\d{2}[\/\-\.]\d{4})/i);
+    return match ? match[1] : '';
+  }
+
+  function formatDate(str) {
+    if (!str) return '';
+    const parts = str.split(/[\/\-\.]/);
+    if (parts.length !== 3) return str;
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const day = parts[0], month = months[parseInt(parts[1], 10) - 1], year = parts[2];
+    return `${day} ${month} ${year}`;
+  }
+
+  function getShortNote(body) {
+    if (!body) return '';
+    const lines = body.split('\n').map(l => l.trim()).filter(Boolean);
+    const items = lines.filter(l => l.startsWith('- ') || l.startsWith('• '));
+    if (items.length > 0) {
+      return items.slice(0, 2).map(l => l.replace(/^[-•]\s*/, '')).join(' · ');
+    }
+    return lines.find(l => !l.startsWith('#') && !l.startsWith('Date')) || '';
+  }
+
+  async function loadReleases() {
+    try {
+      const res = await fetch("https://api.github.com/repos/athaxva/athaxva.github.io/releases");
+      const releases = await res.json();
+
+      const validReleases = releases.filter(r => r.assets?.find(a => a.name.endsWith(".apk")));
+      
+      document.getElementById('version-count').textContent = `${validReleases.length} releases`;
+
+      // Latest card
+      const latest = validReleases[0];
+      if (latest) {
+        const asset = latest.assets.find(a => a.name.endsWith(".apk"));
+        const date = extractDate(latest.body);
+        const notes = parseMarkdownNotes(latest.body);
+
+        document.getElementById('latest').innerHTML = `
+          <div class="latest-inner">
+            <div class="latest-info">
+              <div class="version-badge">
+                <span class="version-number">${latest.tag_name}</span>
+                <span class="version-new">Latest</span>
+              </div>
+              <div class="release-notes">${notes}</div>
+              ${date ? `<div class="release-date">${formatDate(date)}</div>` : ''}
+            </div>
+            <a class="dl-btn" href="${asset.browser_download_url}">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 2v8M5 7l3 3 3-3M2 13h12"/>
+              </svg>
+              Download APK
+            </a>
+          </div>
+        `;
+      }
+
+      // All versions list
+      let versionsHTML = '';
+      validReleases.forEach((release, i) => {
+        const asset = release.assets.find(a => a.name.endsWith(".apk"));
+        const date = extractDate(release.body);
+        const shortNote = getShortNote(release.body);
+
+        versionsHTML += `
+          <div class="version-row">
+            <span class="vr-num">${release.tag_name}</span>
+            <span class="vr-notes">${shortNote}</span>
+            ${date ? `<span class="vr-date">${formatDate(date)}</span>` : ''}
+            <a class="apk-btn" href="${asset.browser_download_url}">
+              <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 2v8M5 7l3 3 3-3M2 13h12"/>
+              </svg>
+              APK
+            </a>
+          </div>
+        `;
+      });
+
+      document.getElementById('versions').innerHTML = versionsHTML;
+
+    } catch (e) {
+      document.getElementById('latest').innerHTML = `<span style="color:var(--muted);font-size:13px;">Could not load releases.</span>`;
+      document.getElementById('versions').innerHTML = `<div style="padding:24px 28px;color:var(--muted);font-size:13px;">Could not load releases.</div>`;
+    }
+  }
+
+  loadReleases();
 </script>
 
 </body>
