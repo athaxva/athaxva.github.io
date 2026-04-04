@@ -15,11 +15,19 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (href) => {
+  const handleNavigation = (href) => {
+    // ✅ External link (Blog)
+    if (href.startsWith('http')) {
+      window.open(href, '_blank');
+      return;
+    }
+
+    // ✅ Internal scroll
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+
     setIsMobileMenuOpen(false);
   };
 
@@ -30,6 +38,7 @@ const Navigation = () => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+
         {/* Logo */}
         <a
           href="#"
@@ -41,29 +50,31 @@ const Navigation = () => {
         >
           <span className="gradient-text">AP</span>
         </a>
-{/* Desktop Navigation */}
-<div className="hidden md:flex items-center gap-8">
-  {navLinks.map((link) => (
-    <button
-      key={link.name}
-      onClick={() => scrollToSection(link.href)}
-      className="text-sm text-gray-400 hover:text-white transition-colors duration-200 relative group"
-    >
-      {link.name}
-      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-200 group-hover:w-full" />
-    </button>
-  ))}
 
-  <a href="/Atharva_Pathak_Resume.pdf" download>
-    <Button
-      size="sm"
-      className="bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-colors duration-200"
-    >
-      <Download className="w-4 h-4 mr-2" />
-      Resume
-    </Button>
-  </a>
-</div>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <button
+              key={link.name}
+              onClick={() => handleNavigation(link.href)}
+              className="text-sm text-gray-400 hover:text-white transition-colors duration-200 relative group"
+            >
+              {link.name}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-200 group-hover:w-full" />
+            </button>
+          ))}
+
+          {/* Resume Button */}
+          <a href="/Atharva_Pathak_Resume.pdf" download>
+            <Button
+              size="sm"
+              className="bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-colors duration-200"
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Resume
+            </Button>
+          </a>
+        </div>
 
         {/* Mobile Menu Button */}
         <button
@@ -81,20 +92,23 @@ const Navigation = () => {
             {navLinks.map((link) => (
               <button
                 key={link.name}
-                onClick={() => scrollToSection(link.href)}
+                onClick={() => handleNavigation(link.href)}
                 className="text-left px-6 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-colors duration-200"
               >
                 {link.name}
               </button>
             ))}
+
             <div className="px-6 pt-3">
-              <Button
-                size="sm"
-                className="w-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 transition-colors duration-200"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Resume
-              </Button>
+              <a href="/Atharva_Pathak_Resume.pdf" download>
+                <Button
+                  size="sm"
+                  className="w-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 transition-colors duration-200"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Resume
+                </Button>
+              </a>
             </div>
           </div>
         </div>
